@@ -2,10 +2,8 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700,300">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.1.2/css/material-design-iconic-font.min.css">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400&family=Finger+Paint&display=swap"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.1.2/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400&family=Finger+Paint&display=swap"> 
     <title>Chatter box!</title>
 </head>
 <body>
@@ -13,7 +11,7 @@
         <div id="header">
             <h1>Chatter box!</h1>
         </div>
-        <div id="message-section">
+        <div id="message-section" #messageSection>
             <div *ngFor='let message of allMessages'>
                 <div class="message" [id]="message.sender">
                     <span [id]="message.sender + '-response'">{{ message.text }}</span>
@@ -21,7 +19,7 @@
             </div>
         </div>
         <div id="input-section">
-            <input id="input" type="text" [(ngModel)]='messageToSave' name='messageToSave' placeholder="Type a message" autocomplete="off" autofocus="autofocus" />
+            <input id="input" type="text" [(ngModel)]='messageToSave' name='messageToSave' placeholder="Type a message" autocomplete="off" autofocus="autofocus" (keydown.enter)="onEnter()" />
             <button class="send" (click)='chatBotFlow()'>
                 <div class="circle"><i class="zmdi zmdi-mail-send"></i></div>
             </button>
@@ -29,3 +27,4 @@
     </div>
 </body>
 </html>
+
