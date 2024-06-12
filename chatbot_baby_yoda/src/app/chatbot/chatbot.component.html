@@ -7,23 +7,10 @@
     <title>Chatter box!</title>
 </head>
 <body>
-    <div class="card">
-        <div id="header">
-            <h1>Chatter box!</h1>
-        </div>
-        <div id="message-section" #messageSection>
-            <div *ngFor='let message of allMessages'>
-                <div class="message" [id]="message.sender">
-                    <span [id]="message.sender + '-response'">{{ message.text }}</span>
-                </div>
-            </div>
-        </div>
-        <div id="input-section">
-            <input id="input" type="text" [(ngModel)]='messageToSave' name='messageToSave' placeholder="Type a message" autocomplete="off" autofocus="autofocus" (keydown.enter)="onEnter()" />
-            <button class="send" (click)='chatBotFlow()'>
-                <div class="circle"><i class="zmdi zmdi-mail-send"></i></div>
-            </button>
-        </div>
+    <div>
+        <df-messenger intent="WELCOME" chat-title="chatbot-expertos-2024" agent-id="794c3164-b5ec-40bd-9afa-5cb0ad4561aa"
+            language-code="en">
+        </df-messenger>
     </div>
 </body>
 </html>
