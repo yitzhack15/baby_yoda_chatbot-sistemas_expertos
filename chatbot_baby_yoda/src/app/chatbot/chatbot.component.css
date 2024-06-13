@@ -1,18 +1,27 @@
-/*Plantilla de como se edita el CSS del chatbot*/
+/* Estilos para el chatbot si es necesario */
 df-messenger {
-    --df-messenger-bot-message: #fff;
-    --df-messenger-button-titlebar-color: #0041C2;
-    --df-messenger-button-titlebar-color: #0041C2;
-    --df-messenger-chat-background-color: #fafafa;
-    --df-messenger-font-color: #000;
-    --df-messenger-send-icon: #00adff;
-    --df-messenger-user-message: #0041C2;
-    --df-messenger-chip-border-color: #0041C2;
+  --df-messenger-bot-message: #fff;
+  --df-messenger-button-titlebar-color: #0041C2;
+  --df-messenger-button-titlebar-color: #0041C2;
+  --df-messenger-chat-background-color: #fafafa;
+  --df-messenger-font-color: #000;
+  --df-messenger-send-icon: #00adff;
+  --df-messenger-user-message: #0041C2;
+  --df-messenger-chip-border-color: #0041C2;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+  background-color: #fff;
 }
 
 .hero-container {
   position: relative;
   text-align: center;
+  padding: 20px;
 }
 
 .hero-text {
@@ -23,7 +32,7 @@ df-messenger {
   z-index: 1;
   color: #fff;
   width: 100%;
-  max-width: 800px; /* Limitar el ancho máximo del texto para mejor legibilidad */
+  max-width: 800px;
   text-align: center;
   padding: 0 20px;
 }
@@ -38,13 +47,9 @@ df-messenger {
 }
 
 .search-container {
-  position: absolute;
-  top: 100%; /* Ajustar la posición del contenedor de búsqueda */
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
+  position: relative;
+  margin-top: 20px;
   text-align: center;
-  width: 100%;
 }
 
 .search-input {
@@ -68,33 +73,33 @@ df-messenger {
 
 .hero-image {
   width: 100%;
-  max-height: 500px; /* Controlar la altura máxima de la imagen */
+  max-height: 400px;
   object-fit: cover;
 }
 
 .popular-destinations-container {
   text-align: center;
-  padding: 50px 20px;
+  padding: 10px;
 }
 
 .popular-destinations {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Cuadrícula responsive */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
   justify-items: center;
 }
 
 .destination-card {
   text-align: center;
-  background-color: #f9f9f9; /* Fondo de las tarjetas */
+  background-color: #f9f9f9;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .destination-card img {
   max-width: 100%;
-  height: 170px; /* Asegurar que las imágenes mantengan su relación de aspecto */
+  height: auto;
   border-radius: 5px;
   margin-bottom: 10px;
 }
@@ -105,3 +110,55 @@ df-messenger {
   margin-top: 10px;
 }
 
+/* Media query para tabletas y dispositivos grandes */
+@media only screen and (min-width: 768px) {
+  .hero-text {
+    font-size: 20px; /* Reducir el tamaño del texto en tabletas */
+  }
+
+  .hero-text h1 {
+    font-size: 40px; /* Tamaño más grande del encabezado en tabletas */
+  }
+
+  .popular-destinations-container {
+    padding: 50px 40px; /* Más relleno en tabletas */
+  }
+}
+
+/* Media query para teléfonos móviles */
+@media only screen and (max-width: 767px) {
+  .hero-image {
+    width: 100%;
+    height: 200px;
+  }
+  .hero-text {
+    font-size: 12px; /* Texto más pequeño en teléfonos móviles */
+  }
+  .popular-destinations-container h2{
+    font-size: 20px;
+  }
+
+  .hero-text h1 {
+    font-size: 18px; /* Encabezado más grande en teléfonos móviles */
+  }
+
+  .search-input {
+    width: 50%; /* Ancho completo para el campo de búsqueda */
+    max-width: 40%;
+  }
+
+  .popular-destinations-container {
+    padding: 30px 20px; /* Menos relleno en teléfonos móviles */
+  }
+  .popular-destinations{
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(150px, 15px));
+    gap: 15px;
+    justify-items: center;
+  }
+
+  .destination-card {
+    font-size: 13px;
+    padding: 15px; /* Menos relleno en las tarjetas en teléfonos móviles */
+  }
+}
