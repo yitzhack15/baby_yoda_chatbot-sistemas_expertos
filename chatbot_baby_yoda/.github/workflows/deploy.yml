@@ -9,16 +9,12 @@ permissions:
   pages: write
   id-token: write
 
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
-
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout repo
         uses: actions/checkout@v4
 
       - name: Setup Node
@@ -29,24 +25,24 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        working-directory: chatbot_baby_yoda
 
       - name: Build Angular
-        run: npm run build -- --base-href /movie-searcher/
+        run: npm run build -- --base-href /baby_yoda_chatbot-sistemas_expertos/
+        working-directory: chatbot_baby_yoda
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: chatbot_baby_yoda
+          path: chatbot_baby_yoda/dist/chatbot_baby_yoda/browser
 
   deploy:
+    needs: build
+    runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    runs-on: ubuntu-latest
-    needs: build
 
     steps:
-      - name: Deploy to GitHub Pages
+      - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
